@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "ag-grid-enterprise": "^34.1.2",
+    "ag-grid-react": "^34.1.2",
+    "axios": "^1.11.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },
