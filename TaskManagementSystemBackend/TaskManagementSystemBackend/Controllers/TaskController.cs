@@ -86,8 +86,8 @@ namespace TaskManagementSystemBackend.Controllers
             }
         }
 
-        [HttpPut]
-        public async Task<IActionResult> UpdateTask(int id, TaskItem updateTask)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateTask(int id, [FromBody]TaskItem updateTask)
         {
             // Validate task item
             if (!ModelState.IsValid)
