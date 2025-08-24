@@ -5,6 +5,7 @@ import { provideGlobalGridOptions, ModuleRegistry, AllCommunityModule } from 'ag
 import { SetFilterModule } from 'ag-grid-enterprise';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-quartz.css';
+import '../styles/TaskList.css';
 
 export default function TaskList({refresh}) {
     // Backend base url
@@ -139,20 +140,31 @@ export default function TaskList({refresh}) {
 
     // View modal for displaying task details
     const ViewModal = ({ task, onClose }) => (
-        console.log(task),
-        <div style={{
-            position: "fixed", top: 0, left: 0, width: "100vw", height: "100vh",
-            background: "rgba(0,0,0,0.5)", display: "flex", alignItems: "center", justifyContent: "center"
-        }}>
-            <div style={{ background: "#fff", padding: 20, borderRadius: 8, minWidth: 300 }}>
-                <h3>Task Details</h3>
-                <div><b>ID:</b> {task.id}</div>
-                <div><b>Title:</b> {task.title}</div>
-                <div><b>Description:</b> {task.description}</div>
-                <div><b>Completed:</b> {task.completed}</div>
-                <div><b>Created At:</b> {new Date(task.dateCreated).toLocaleString()}</div>
-                <div><b>Updated At:</b> {new Date(task.dateUpdated).toLocaleString()}</div>
-                <button style={{ marginTop: 10 }} onClick={onClose}>Close</button>
+        <div className="viewContainer">
+            <div className="viewContent">
+                <h3 className="viewTitle">Task Details</h3>
+                <hr/>
+                <div className="viewRow">
+                    <span className="viewLabel">ID:</span> {task.id}
+                </div>
+                <div className="viewRow">
+                    <span className="viewLabel">Title:</span> {task.title}
+                </div>
+                <div className="viewRow">
+                    <span className="viewLabel">Description:</span> {task.description}
+                </div>
+                <div className="viewRow">
+                    <span className="viewLabel">Completed:</span> {task.completed}
+                </div>
+                <div className="viewRow">
+                    <span className="viewLabel">Created At:</span> {new Date(task.dateCreated).toLocaleString()}
+                </div>
+                <div className="viewRow">
+                    <span className="viewLabel">Updated At:</span> {new Date(task.dateUpdated).toLocaleString()}
+                </div>
+                <div className="viewButton">
+                    <button onClick={onClose}>Close</button>
+                </div>
             </div>
         </div>
     );
@@ -208,23 +220,23 @@ export default function TaskList({refresh}) {
 
         // Form container
         return (
-            <div style={{
-                position: "fixed", top: 0, left: 0, width: "100vw", height: "100vh",
-                background: "rgba(0,0,0,0.5)", display: "flex", alignItems: "center", justifyContent: "center"
-            }}>
-                <form style={{ background: "#fff", padding: 20, borderRadius: 8, minWidth: 300 }} onSubmit={handleSubmit}>
-                    <h3>Edit Task</h3>
+            <div className="editDiv">
+                <form onSubmit={handleSubmit}>
+                    <h3 className="editTitle">Edit Task</h3>
+                    <hr/>
                     <div>
                         <label>Title:</label>
-                        <input value={title} onChange={e => setTitle(e.target.value)} />
+                        <br/>
+                        <input type="text" value={title} onChange={e => setTitle(e.target.value)} />
                     </div>
                     <div>
                         <label>Description:</label>
-                        <input value={description} onChange={e => setDescription(e.target.value)} />
+                        <br/>
+                        <textarea value={description} onChange={e => setDescription(e.target.value)} />
                     </div>
-                    <div style={{ marginTop: 10 }}>
+                    <div className="editButtons">
                         <button type="submit">Save</button>
-                        <button type="button" onClick={onClose} style={{ marginLeft: 10 }}>Cancel</button>
+                        <button type="button" onClick={onClose}>Cancel</button>
                     </div>
                 </form>
             </div>
@@ -294,9 +306,9 @@ export default function TaskList({refresh}) {
     // Column definitions for ag-grid
     const [columnDefs, setColumnDefs] = useState([
         { headerName: "ID", field: "id"},
-        { headerName: "Title", field: "title", flex:2 },
-        { headerName: "Description", field: "description", flex:3 },
-        { headerName: "Completed", field: "completed", filter:"agSetColumnFilter", filterParams:{values:["Completed","Pending"]}, cellRenderer: CompletedComponent },
+        { headerName: "Title", field: "title" },
+        { headerName: "Description", field: "description" },
+        { headerName: "Completed", field: "completed", minWidth: 120, filter:"agSetColumnFilter", filterParams:{values:["Completed","Pending"]}, cellRenderer: CompletedComponent },
         { headerName: "View", field: "view", sortable: false, filter: false, cellRenderer: ViewComponent},
         { headerName: "Edit", field: "edit", sortable: false, filter: false, cellRenderer: EditComponent},
         { headerName: "Delete", field: "delete", sortable: false, filter: false, cellRenderer: DeleteComponent}
@@ -304,12 +316,12 @@ export default function TaskList({refresh}) {
 
     // Show loading message while fetching data
     if (loading) {
-        return <div className="loading" style={{textAlign:"center", padding:"20px"}}>Loading tasks...</div>;
+        return <div className="loading">Loading tasks...</div>;
     }
 
     // Show error message while fetching data
     if (error) {
-        return <div className="error" style={{textAlign:"center", padding:"20px"}}><b>Error:</b> {error}. Please try again later.</div>;
+        return <div className="error"><b>Error:</b> {error}. Please try again later.</div>;
     }
 
     
@@ -321,7 +333,7 @@ export default function TaskList({refresh}) {
       <div>
         <p>{message}</p>
         {rowData.length === 0 ? (
-            <div style={{ textAlign: "center", padding: "20px" }}>
+            <div className="no-tasks">
             No tasks found.
             </div>
         ) : (
@@ -337,7 +349,8 @@ export default function TaskList({refresh}) {
             />
             </div>
         )}
-        {showEditModal && selectedTask && (
+      </div>
+      {showEditModal && selectedTask && (
             <EditModal
                 task={selectedTask}
                 onClose={() => { setShowEditModal(false); setSelectedTask(null); }}
@@ -350,7 +363,6 @@ export default function TaskList({refresh}) {
                 onClose={() => { setShowViewModal(false); setSelectedTask(null); }}
             />
         )}
-      </div>
     </div>
   );
 }
