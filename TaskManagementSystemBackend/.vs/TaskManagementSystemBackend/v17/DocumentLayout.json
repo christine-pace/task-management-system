@@ -30,15 +30,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:1:0:{fabf9319-47eb-497e-b8f6-d9f73fba5f55}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:41248:0:{bf84ea66-d821-4dba-b1b1-2777d8574775}"
             },
             {
               "$type": "Document",
@@ -49,8 +45,7 @@
               "ToolTip": "C:\\Users\\swtch\\Git-projects\\task-management-system\\TaskManagementSystemBackend\\TaskManagementSystemBackend\\TaskManagementSystemBackend.csproj",
               "RelativeToolTip": "TaskManagementSystemBackend\\TaskManagementSystemBackend.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-08-23T13:48:58.448Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-23T13:48:58.448Z"
             },
             {
               "$type": "Document",
@@ -62,8 +57,7 @@
               "RelativeToolTip": "TaskManagementSystemBackend\\Properties\\launchSettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-08-23T13:42:57.297Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-23T13:42:57.297Z"
             },
             {
               "$type": "Document",
@@ -75,8 +69,7 @@
               "RelativeToolTip": "TaskManagementSystemBackend\\Program.cs",
               "ViewState": "AgIAAAgAAAAAMzMzMzMbwBkAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-23T13:27:39.647Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-23T13:27:39.647Z"
             },
             {
               "$type": "Document",
@@ -88,8 +81,7 @@
               "RelativeToolTip": "TaskManagementSystemBackend\\Model\\TaskItem.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-23T12:41:13.959Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-23T12:41:13.959Z"
             },
             {
               "$type": "Document",
